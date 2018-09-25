@@ -31,6 +31,36 @@ extension House {
     }
     
     func add(person: Person) {
+        guard self == person.house else { return }
         _members.insert(person)
+    }
+}
+
+extension House {
+    var proxyForEquality: String {
+        return "\(name) \(words) \(count)"
+    }
+    
+    var proxyForComparison: String {
+        return name.uppercased()
+    }
+}
+
+extension House: Equatable {
+    static func == (lhs: House, rhs: House) -> Bool {
+        return lhs.proxyForEquality == rhs.proxyForEquality
+    }
+}
+
+extension House: Hashable {
+    var hashValue: Int {
+        return proxyForEquality.hashValue
+    }
+}
+
+extension House: Comparable {
+    static func < (lhs: House, rhs: House) -> Bool {
+        // Orden alfabético
+        return lhs.proxyForComparison < rhs.proxyForComparison
     }
 }
