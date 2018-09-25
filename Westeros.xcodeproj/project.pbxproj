@@ -15,6 +15,9 @@
 		936D19802153696F000F3511 /* Sigil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D197F2153696F000F3511 /* Sigil.swift */; };
 		936D1982215378AA000F3511 /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D1981215378AA000F3511 /* PersonTests.swift */; };
 		936D1984215378F0000F3511 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D1983215378F0000F3511 /* Person.swift */; };
+		93AF57F1215A148D005D503A /* targaryenSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93AF57EE215A148D005D503A /* targaryenSmall.jpg */; };
+		93AF57F2215A148D005D503A /* lannister.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93AF57EF215A148D005D503A /* lannister.jpg */; };
+		93AF57F3215A148D005D503A /* codeIsComing.png in Resources */ = {isa = PBXBuildFile; fileRef = 93AF57F0215A148D005D503A /* codeIsComing.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		936D197F2153696F000F3511 /* Sigil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sigil.swift; sourceTree = "<group>"; };
 		936D1981215378AA000F3511 /* PersonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
 		936D1983215378F0000F3511 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		93AF57EE215A148D005D503A /* targaryenSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = targaryenSmall.jpg; sourceTree = "<group>"; };
+		93AF57EF215A148D005D503A /* lannister.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lannister.jpg; sourceTree = "<group>"; };
+		93AF57F0215A148D005D503A /* codeIsComing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeIsComing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		936D195921535036000F3511 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				93AF57F5215A14C6005D503A /* Resources */,
 				936D197C21536250000F3511 /* Domain */,
 				936D195A21535036000F3511 /* AppDelegate.swift */,
 				936D19612153503D000F3511 /* Assets.xcassets */,
@@ -108,6 +115,16 @@
 				936D1983215378F0000F3511 /* Person.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		93AF57F5215A14C6005D503A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				93AF57F0215A148D005D503A /* codeIsComing.png */,
+				93AF57EF215A148D005D503A /* lannister.jpg */,
+				93AF57EE215A148D005D503A /* targaryenSmall.jpg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,7 +209,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AF57F2215A148D005D503A /* lannister.jpg in Resources */,
 				936D19652153503D000F3511 /* LaunchScreen.storyboard in Resources */,
+				93AF57F1215A148D005D503A /* targaryenSmall.jpg in Resources */,
+				93AF57F3215A148D005D503A /* codeIsComing.png in Resources */,
 				936D19622153503D000F3511 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
