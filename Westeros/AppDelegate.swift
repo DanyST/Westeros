@@ -19,8 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .cyan
         
-        let rootViewController = UIViewController()
-        window?.rootViewController = rootViewController
+        // 1. Creamos el modelo
+        let starkSigil = Sigil(description: "Lobo Huargo", image: UIImage(named: "codeIsComing.png")!)
+        
+        let starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
+        // 2. Creamos el controlador
+        let starkViewController = HouseDetailViewController(model: starkHouse)
+        
+        //3. Asignamos el rootVC
+        window?.rootViewController = starkViewController
         
         // Always in same line before 'return true'
         window?.makeKeyAndVisible()
