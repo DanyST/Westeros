@@ -10,9 +10,11 @@ import XCTest
 @testable import Westeros
 
 class RepositoryTests: XCTestCase {
-
+    
+    var localHouses: [House]!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        localHouses = Repository.local.houses
     }
 
     override func tearDown() {
@@ -24,11 +26,31 @@ class RepositoryTests: XCTestCase {
     }
     
     func testLocalRepositoryHousesCreation() {
-        let houses = Repository.local.houses
+        XCTAssertNotNil(localHouses)
         
-        XCTAssertNotNil(houses)
+        XCTAssertGreaterThan(localHouses.count, 0)
         
-        XCTAssertGreaterThan(houses.count, 0)
+        XCTAssertEqual(localHouses.count, 3)
+    }
+    
+    func testLocalRepositoryRetunsSortedArrayOfHouses() {
+        XCTAssertEqual(localHouses, localHouses.sorted())
+    }
+    
+    func testLocalRepositoryReturnHouseByNameInsensitively() {
+        let starkHouse = Repository.local.house(named: "StArK")
+        XCTAssertEqual(starkHouse?.name, "Stark")
+        
+        let keepcoding = Repository.local.house(named: "Keepcoding")
+        XCTAssertNil(keepcoding)
+    }
+    
+    func testLocalRepositoryHouseFiltering() {
+        var filtered = Repository.local.houses { $0.count == 1 }
+        XCTAssertEqual(filtered.count, 1)
+        
+        filtered = Repository.local.houses { $0.count == 100 }
+        XCTAssertTrue(filtered.isEmpty)
     }
 
 }

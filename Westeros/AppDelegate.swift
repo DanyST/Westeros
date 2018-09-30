@@ -23,12 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let houses = Repository.local.houses
         
         // 2. Creamos los controladores
-        var controllers = [UIViewController]()
-//        let controllers: HouseDetailViewController = []
-        
-        for house in houses {
-            controllers.append(HouseDetailViewController(model: house).wrappedInNavigation())
-        }
+        let controllers = houses.map { HouseDetailViewController(model: $0).wrappedInNavigation() }
         
         // 3. Creamos el combinador
         let tabBarViewController = UITabBarController()

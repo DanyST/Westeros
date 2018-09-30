@@ -15,12 +15,14 @@ final class House {
     let name: String
     let sigil: Sigil
     let words: Words
+    let wikiUrl: URL
     private var _members: Members
     
-    init(name: String, sigil: Sigil, words: Words) {
+    init(name: String, sigil: Sigil, words: Words, url: URL) {
         self.name = name
         self.sigil = sigil
         self.words = words
+        self.wikiUrl = url
         self._members = Members()
     }
 }
@@ -33,6 +35,10 @@ extension House {
     func add(person: Person) {
         guard self == person.house else { return }
         _members.insert(person)
+    }
+    
+    func add(persons: Person...) {
+        persons.forEach { self.add(person: $0) }
     }
 }
 
