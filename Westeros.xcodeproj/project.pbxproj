@@ -25,6 +25,8 @@
 		93B49B532160730000CC671D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B49B522160730000CC671D /* Repository.swift */; };
 		93B9D09D21613946000C9793 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9D09B21613946000C9793 /* WikiViewController.swift */; };
 		93B9D09E21613946000C9793 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B9D09C21613946000C9793 /* WikiViewController.xib */; };
+		93B9D0A121616A66000C9793 /* HouseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9D09F21616A66000C9793 /* HouseListViewController.swift */; };
+		93B9D0A221616A66000C9793 /* HouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B9D0A021616A66000C9793 /* HouseListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		93B49B522160730000CC671D /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		93B9D09B21613946000C9793 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		93B9D09C21613946000C9793 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
+		93B9D09F21616A66000C9793 /* HouseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewController.swift; sourceTree = "<group>"; };
+		93B9D0A021616A66000C9793 /* HouseListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				93AF57F8215A16B5005D503A /* HouseDetailViewController.xib */,
 				93B9D09B21613946000C9793 /* WikiViewController.swift */,
 				93B9D09C21613946000C9793 /* WikiViewController.xib */,
+				93B9D09F21616A66000C9793 /* HouseListViewController.swift */,
+				93B9D0A021616A66000C9793 /* HouseListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				93AF57F2215A148D005D503A /* lannister.jpg in Resources */,
 				93B9D09E21613946000C9793 /* WikiViewController.xib in Resources */,
 				936D19652153503D000F3511 /* LaunchScreen.storyboard in Resources */,
+				93B9D0A221616A66000C9793 /* HouseListViewController.xib in Resources */,
 				93AF57FA215A16B5005D503A /* HouseDetailViewController.xib in Resources */,
 				93AF57F1215A148D005D503A /* targaryenSmall.jpg in Resources */,
 				93AF57F3215A148D005D503A /* codeIsComing.png in Resources */,
@@ -286,6 +293,7 @@
 				936D195B21535036000F3511 /* AppDelegate.swift in Sources */,
 				93B9D09D21613946000C9793 /* WikiViewController.swift in Sources */,
 				936D1984215378F0000F3511 /* Person.swift in Sources */,
+				93B9D0A121616A66000C9793 /* HouseListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

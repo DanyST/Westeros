@@ -22,15 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 1. Creamos el modelo
         let houses = Repository.local.houses
         
-        // 2. Creamos los controladores
-        let controllers = houses.map { HouseDetailViewController(model: $0).wrappedInNavigation() }
-        
-        // 3. Creamos el combinador
-        let tabBarViewController = UITabBarController()
-        tabBarViewController.viewControllers = controllers
+        // 2. Crear la tabla (lista)
+        let houseListViewController = HouseListViewController(model: houses)
         
         //3. Asignamos el rootVC
-        window?.rootViewController = tabBarViewController
+        window?.rootViewController = houseListViewController.wrappedInNavigation()
         
         // Always in same line before 'return true'
         window?.makeKeyAndVisible()
