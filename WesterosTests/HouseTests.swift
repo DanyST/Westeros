@@ -28,6 +28,7 @@ class HouseTests: XCTestCase {
         let starkUrl = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
         let lannisterUrl = URL(string: "https://awoiaf.westeros.org/index.php/House_Lannister")!
         
+        // No podemos usar las del Repositorio, porque necesitamos un estado limpio
         starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno", url: starkUrl)
         lannisterHouse = House(name: "Lanninster", sigil: lannisterSigil, words: "Oye mi rugido", url: lannisterUrl)
         

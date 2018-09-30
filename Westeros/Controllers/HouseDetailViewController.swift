@@ -41,6 +41,8 @@ class HouseDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setUpUI()
+        
         // Sincronizar modelo y vista
         syncModelWithView()
     }
@@ -50,6 +52,22 @@ class HouseDetailViewController: UIViewController {
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
+    }
+    
+    func setUpUI() {
+        // Crear un boton
+        let wikiButton = UIBarButtonItem(title: "Wiki", style: .plain, target: self, action: #selector(displayWiki))
+        // Añadir el boton
+        self.navigationItem.rightBarButtonItem = wikiButton
+    }
+    
+    @objc func displayWiki() {
+        // No podemos utilizar nada que no exista en Objective-c, esto es por el "@objc"
+        // Crear el VC destino
+        let wikiViewController = WikiViewController(model: model)
+        
+        // Navegar a el, push
+        self.navigationController?.pushViewController(wikiViewController, animated: true)
     }
     
 }
