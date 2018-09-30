@@ -20,6 +20,9 @@
 		93AF57F3215A148D005D503A /* codeIsComing.png in Resources */ = {isa = PBXBuildFile; fileRef = 93AF57F0215A148D005D503A /* codeIsComing.png */; };
 		93AF57F9215A16B5005D503A /* HouseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF57F7215A16B5005D503A /* HouseDetailViewController.swift */; };
 		93AF57FA215A16B5005D503A /* HouseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AF57F8215A16B5005D503A /* HouseDetailViewController.xib */; };
+		93B49B4E21604FA600CC671D /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B49B4D21604FA600CC671D /* UIViewController+Navigation.swift */; };
+		93B49B502160718600CC671D /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B49B4F2160718600CC671D /* RepositoryTests.swift */; };
+		93B49B532160730000CC671D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B49B522160730000CC671D /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		93AF57F0215A148D005D503A /* codeIsComing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeIsComing.png; sourceTree = "<group>"; };
 		93AF57F7215A16B5005D503A /* HouseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailViewController.swift; sourceTree = "<group>"; };
 		93AF57F8215A16B5005D503A /* HouseDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseDetailViewController.xib; sourceTree = "<group>"; };
+		93B49B4D21604FA600CC671D /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
+		93B49B4F2160718600CC671D /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
+		93B49B522160730000CC671D /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 		936D195921535036000F3511 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				93B49B4C21604F5700CC671D /* Additions */,
 				93AF57F6215A1657005D503A /* Controllers */,
 				93AF57F5215A14C6005D503A /* Resources */,
 				936D197C21536250000F3511 /* Domain */,
@@ -108,6 +115,7 @@
 				936D19712153503D000F3511 /* Info.plist */,
 				936D197A2153609F000F3511 /* HouseTests.swift */,
 				936D1981215378AA000F3511 /* PersonTests.swift */,
+				93B49B4F2160718600CC671D /* RepositoryTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -115,6 +123,7 @@
 		936D197C21536250000F3511 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				93B49B51216072EA00CC671D /* Repositories */,
 				936D197D2153627D000F3511 /* House.swift */,
 				936D197F2153696F000F3511 /* Sigil.swift */,
 				936D1983215378F0000F3511 /* Person.swift */,
@@ -139,6 +148,22 @@
 				93AF57F8215A16B5005D503A /* HouseDetailViewController.xib */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		93B49B4C21604F5700CC671D /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				93B49B4D21604FA600CC671D /* UIViewController+Navigation.swift */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		93B49B51216072EA00CC671D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				93B49B522160730000CC671D /* Repository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B49B532160730000CC671D /* Repository.swift in Sources */,
+				93B49B4E21604FA600CC671D /* UIViewController+Navigation.swift in Sources */,
 				93AF57F9215A16B5005D503A /* HouseDetailViewController.swift in Sources */,
 				936D19802153696F000F3511 /* Sigil.swift in Sources */,
 				936D197E2153627D000F3511 /* House.swift in Sources */,
@@ -260,6 +287,7 @@
 			files = (
 				936D197B2153609F000F3511 /* HouseTests.swift in Sources */,
 				936D1982215378AA000F3511 /* PersonTests.swift in Sources */,
+				93B49B502160718600CC671D /* RepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

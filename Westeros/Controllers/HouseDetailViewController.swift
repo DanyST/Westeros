@@ -25,6 +25,10 @@ class HouseDetailViewController: UIViewController {
         
         // Despues, llamamos a super
         super.init(nibName: nil, bundle: nil)
+        
+        // Si quieres, utilizas alguna propiedad de tu super clase
+        self.title = model.name
+
     }
     
     // Chapuza de los de Cupertino, relacionada con los nil
