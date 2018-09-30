@@ -16,6 +16,7 @@ class WikiViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     // MARK: - Initialization
     init(model: House) {
@@ -35,6 +36,8 @@ class WikiViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // asignar delegados
+        webView.navigationDelegate = self
         
         // Sincronizar modelo y vista
         syncModelWithView()
@@ -44,7 +47,37 @@ class WikiViewController: UIViewController {
 extension WikiViewController {
     func syncModelWithView() {
         self.title = model.name
+        
         let request = URLRequest(url: model.wikiUrl)
+        
+        loadingView.startAnimating()
+        
         self.webView.load(request)
+    }
+}
+
+extension WikiViewController: WKNavigationDelegate { // Should, WIll, Did
+    // Patron de delegate, siempre envia el objeto del que se es delegado
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        // Detener el spinner
+        self.loadingView.stopAnimating()
+        
+        // Ocultarlo
+        // Toda vista tiene la propiedad 'isHidden'
+        self.loadingView.isHidden = true
+    }
+    
+    // @escaping la clausura solo es ejecutada cuando el usuario lo haga
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        let type = navigationAction.navigationType
+        
+        switch type {
+        case .linkActivated, .formSubmitted, .formResubmitted:
+            decisionHandler(.cancel)
+        default:
+            decisionHandler(.allow)
+        }
+        
     }
 }
