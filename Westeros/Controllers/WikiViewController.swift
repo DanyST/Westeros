@@ -12,7 +12,7 @@ import WebKit
 class WikiViewController: UIViewController {
     
     // MARK: - Properties
-    let model: House
+    var model: House
     
     // MARK: - Outlets
     @IBOutlet weak var webView: WKWebView!
@@ -34,6 +34,24 @@ class WikiViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Nos damos de alta en las notificaciones, osea, me suscribo a aquellos eventos que me interesan
+        // En este caso, me quiero enterar de cuando se cambia una casa
+        // Quiero observar los cambios de casa( notificacion con nombre HouseDidChangeNotificationName
+        // y cuando ocurra, quiero ejecutar el metodo houseDidChange
+        NotificationCenter.default.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(HouseDidChangeNotificationName), object: nil) // object es quien lo manda
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Aqui nos damos de baja en las notificaciones
+        // No nos interesa seguir recibiendo las actualizaciones de las casas
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // asignar delegados
@@ -45,11 +63,26 @@ class WikiViewController: UIViewController {
 }
 
 extension WikiViewController {
+    // MARK: - Notifications
+    @objc func houseDidChange(notification: Notification) {
+        // sacar la info y extraer la casa
+        guard let info = notification.userInfo,
+            let house = info[HouseKey] as? House else { return }
+        
+        // Actualizar el modelo
+        self.model = house
+        
+        // Sincronizar modelo y vista
+        syncModelWithView()
+    }
+}
+
+extension WikiViewController {
+    // MARK: - Sync
     func syncModelWithView() {
         self.title = model.name
         
         let request = URLRequest(url: model.wikiUrl)
-        
         loadingView.startAnimating()
         
         self.webView.load(request)

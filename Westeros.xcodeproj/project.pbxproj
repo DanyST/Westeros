@@ -29,6 +29,7 @@
 		93B9D0A221616A66000C9793 /* HouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B9D0A021616A66000C9793 /* HouseListViewController.xib */; };
 		93B9D0A921618E24000C9793 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9D0A721618E24000C9793 /* MemberListViewController.swift */; };
 		93B9D0AA21618E24000C9793 /* MemberListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B9D0A821618E24000C9793 /* MemberListViewController.xib */; };
+		93B9D0AC2161BCCC000C9793 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9D0AB2161BCCC000C9793 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		93B9D0A021616A66000C9793 /* HouseListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseListViewController.xib; sourceTree = "<group>"; };
 		93B9D0A721618E24000C9793 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		93B9D0A821618E24000C9793 /* MemberListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberListViewController.xib; sourceTree = "<group>"; };
+		93B9D0AB2161BCCC000C9793 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		936D195921535036000F3511 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				93B9D0AB2161BCCC000C9793 /* Constants.swift */,
 				93B49B4C21604F5700CC671D /* Additions */,
 				93AF57F6215A1657005D503A /* Controllers */,
 				93AF57F5215A14C6005D503A /* Resources */,
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B49B532160730000CC671D /* Repository.swift in Sources */,
+				93B9D0AC2161BCCC000C9793 /* Constants.swift in Sources */,
 				93B49B4E21604FA600CC671D /* UIViewController+Navigation.swift in Sources */,
 				93AF57F9215A16B5005D503A /* HouseDetailViewController.swift in Sources */,
 				936D19802153696F000F3511 /* Sigil.swift in Sources */,

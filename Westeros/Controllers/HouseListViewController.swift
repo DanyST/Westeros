@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol HouseListViewControllerDelegate {
+    // Should
+    // Will
+    // Did
+    // Convencion: El primer parametro de las funciones del delegate es SIEMPRE el objeto
+    func houseListViewController(_ vc: HouseListViewController, didSelectedHouse house: House)
+}
+
 class HouseListViewController: UITableViewController {
     
     // MARK: - Properties
     let model: [House]
+    var delegate: HouseListViewControllerDelegate?
     
     // MARK: - Initialization
     init(model: [House]) {
@@ -73,10 +82,15 @@ class HouseListViewController: UITableViewController {
         // Averiguar la casa en cuestion
         let house = model[indexPath.row]
         
-        // Creamos el controlador de detalle de la casa
-        let houseDetailViewController = HouseDetailViewController(model: house)
+        // SIEMPRE emitir la informacion a través de los dos metodos: delegates y notifications
+        // Avisar/Informar al delegado
+        delegate?.houseListViewController(self, didSelectedHouse: house)
         
-        // Push
-        self.navigationController?.pushViewController(houseDetailViewController, animated: true)
+        // Enviar una notificacion
+        let nc = NotificationCenter.default
+        let notification = Notification.init(name: Notification.Name(rawValue: HouseDidChangeNotificationName),
+                                             object: self, userInfo: [HouseKey : house])
+        
+        nc.post(notification)
     }
 }
