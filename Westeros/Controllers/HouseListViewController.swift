@@ -65,6 +65,10 @@ class HouseListViewController: UITableViewController {
     }
     
     // MARK: - Delegate
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         // Averiguar la casa en cuestion
         let house = model[indexPath.row]

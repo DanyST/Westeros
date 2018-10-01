@@ -56,4 +56,12 @@ class PersonTests: XCTestCase {
     func testPersonHashable() {
         XCTAssertNotNil(ned.hashValue)
     }
+    
+    func testPersonComparison() {
+        XCTAssertGreaterThan(ned, arya)
+    }
+    
+    func testHouseSortedMembersReturnsASortedArray() {
+        
+    }
 }

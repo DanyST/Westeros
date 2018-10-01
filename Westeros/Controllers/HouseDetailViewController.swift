@@ -55,10 +55,13 @@ class HouseDetailViewController: UIViewController {
     }
     
     func setUpUI() {
-        // Crear un boton
+        // Crear los botones
         let wikiButton = UIBarButtonItem(title: "Wiki", style: .plain, target: self, action: #selector(displayWiki))
-        // Añadir el boton
-        self.navigationItem.rightBarButtonItem = wikiButton
+        
+        let membersButton = UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayMembers))
+        
+        // Añadir los botones
+        self.navigationItem.rightBarButtonItems = [membersButton, wikiButton]
     }
     
     @objc func displayWiki() {
@@ -68,6 +71,13 @@ class HouseDetailViewController: UIViewController {
         
         // Navegar a el, push
         self.navigationController?.pushViewController(wikiViewController, animated: true)
+    }
+    
+    @objc func displayMembers() {
+        let memberListViewController = MemberListViewController(model: model.sortedMembers)
+        
+        // Push
+        self.navigationController?.pushViewController(memberListViewController, animated: true)
     }
     
 }

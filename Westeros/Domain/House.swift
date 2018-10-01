@@ -28,6 +28,10 @@ final class House {
 }
 
 extension House {
+    var sortedMembers: [Person] {
+        return _members.sorted()
+    }
+    
     var count: Int {
         return _members.count
     }
