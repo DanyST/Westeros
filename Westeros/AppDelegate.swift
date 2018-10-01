@@ -22,11 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 1. Creamos el modelo
         let houses = Repository.local.houses
         
-        // 2. Crear la tabla (lista)
-        let houseListViewController = HouseListViewController(model: houses)
+        // 2. Crear los controladores
         
-        //3. Asignamos el rootVC
-        window?.rootViewController = houseListViewController.wrappedInNavigation()
+        // Master
+        let houseListNavigationController = HouseListViewController(model: houses).wrappedInNavigation()
+
+        // Detail
+        let houseDetailNavigationController = HouseDetailViewController(model: houses.first!).wrappedInNavigation()
+        
+        // 3. Creamos el combinador, osea, el splitVC
+        let splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [
+            houseListNavigationController,
+            houseDetailNavigationController
+        ]
+        
+        // 4. Asignamos el rootVC
+        window?.rootViewController = splitViewController
         
         // Always in same line before 'return true'
         window?.makeKeyAndVisible()
