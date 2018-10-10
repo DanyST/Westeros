@@ -159,12 +159,12 @@
 		93AF57F6215A1657005D503A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				93B9D09F21616A66000C9793 /* HouseListViewController.swift */,
+				93B9D0A021616A66000C9793 /* HouseListViewController.xib */,
 				93AF57F7215A16B5005D503A /* HouseDetailViewController.swift */,
 				93AF57F8215A16B5005D503A /* HouseDetailViewController.xib */,
 				93B9D09B21613946000C9793 /* WikiViewController.swift */,
 				93B9D09C21613946000C9793 /* WikiViewController.xib */,
-				93B9D09F21616A66000C9793 /* HouseListViewController.swift */,
-				93B9D0A021616A66000C9793 /* HouseListViewController.xib */,
 				93B9D0A721618E24000C9793 /* MemberListViewController.swift */,
 				93B9D0A821618E24000C9793 /* MemberListViewController.xib */,
 			);

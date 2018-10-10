@@ -54,7 +54,7 @@ class HouseListViewController: UITableViewController {
         let cellId = "HouseCell"
         
         // Descubrir el item (casa) que tenemos que mostrar
-        let house = model[indexPath.row]
+        let theHouse = house(at: indexPath.row)
         
         // Crear una celda (o que nos la den del caché)
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
@@ -65,8 +65,8 @@ class HouseListViewController: UITableViewController {
         }
         
         // Sincronizar celda(view) y casa (model)
-        cell?.imageView?.image = house.sigil.image
-        cell?.textLabel?.text = house.name
+        cell?.imageView?.image = theHouse.sigil.image
+        cell?.textLabel?.text = theHouse.name
         
         // Devolver la celda
         // Siempre tendrá un valor, por lo que hacemos desempaquetado explicito
@@ -80,17 +80,45 @@ class HouseListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         // Averiguar la casa en cuestion
-        let house = model[indexPath.row]
+        let theHouse = house(at: indexPath.row)
         
         // SIEMPRE emitir la informacion a través de los dos metodos: delegates y notifications
         // Avisar/Informar al delegado
-        delegate?.houseListViewController(self, didSelectedHouse: house)
+        delegate?.houseListViewController(self, didSelectedHouse: theHouse)
         
         // Enviar una notificacion
         let nc = NotificationCenter.default
         let notification = Notification.init(name: Notification.Name(rawValue: HouseDidChangeNotificationName),
-                                             object: self, userInfo: [HouseKey : house])
+                                             object: self, userInfo: [HouseKey : theHouse])
         
         nc.post(notification)
+        
+        // Guardamos la ultima casa seleccionada
+        saveLastSelectedHouse(at: indexPath.row)
+    }
+}
+
+// MARK: - Persistence (UserDefaults) Solo sirve para persistir PEQUEÑAS cantidades de objetos
+// Los objetos tiene que ser sencillos: String, Int, Array, ...
+extension HouseListViewController {
+    func saveLastSelectedHouse(at row: Int) {
+        // Aquí vamos a guardar la ultima casa seleccionada
+        let userDefaults = UserDefaults.standard
+        
+        // Lo insertamos en el diccionario de User Defaults
+        userDefaults.set(row, forKey: lastHouseKey)
+        
+        // Guardar
+        userDefaults.synchronize() // Por si acaso
+    }
+    
+    func lastSelectedHouse() -> House {
+        // Averiguar cual es la ultima row seleccionada (si la hay)
+        let row = UserDefaults.standard.integer(forKey: lastHouseKey) // Value 0 es el default
+        return house(at: row)
+    }
+    
+    func house(at index: Int) -> House {
+        return model[index]
     }
 }

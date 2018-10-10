@@ -10,3 +10,4 @@ import Foundation
 
 let HouseDidChangeNotificationName = "HouseDidChange"
 let HouseKey = "HouseKey"
+let lastHouseKey = "LastHouseKey"
