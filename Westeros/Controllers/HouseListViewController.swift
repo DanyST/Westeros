@@ -38,6 +38,22 @@ class HouseListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerCustomCell()
+    }
+    
+    func registerCustomCell() {
+        // Siempre que utilicemos celdas personalizadas, primero tenemos que registrarlas
+        // tenemos dos opciones para registrar una celda personalizada
+        // 1. Por clase
+        // 2. Por nib
+        // ¿Cuando usar uno o el otro? Si tenemos la celda personalizada en un XIB, usamos register Nib
+        let nib = UINib(nibName: "HouseCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: HouseCell.reuseIdentifier)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,31 +67,25 @@ class HouseListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellId = "HouseCell"
-        
         // Descubrir el item (casa) que tenemos que mostrar
         let theHouse = house(at: indexPath.row)
         
         // Crear una celda (o que nos la den del caché)
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
-        
-        // No hay ninguna en caché
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: HouseCell.reuseIdentifier) as! HouseCell
         
         // Sincronizar celda(view) y casa (model)
-        cell?.imageView?.image = theHouse.sigil.image
-        cell?.textLabel?.text = theHouse.name
+        cell.sigilImageView.image = theHouse.sigil.image
+        cell.nameLabel.text = theHouse.name
+        cell.wordsLabel.text = theHouse.words
         
         // Devolver la celda
         // Siempre tendrá un valor, por lo que hacemos desempaquetado explicito
-        return cell!
+        return cell
     }
     
     // MARK: - Delegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
