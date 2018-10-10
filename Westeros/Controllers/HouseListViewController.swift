@@ -88,8 +88,8 @@ class HouseListViewController: UITableViewController {
         
         // Enviar una notificacion
         let nc = NotificationCenter.default
-        let notification = Notification.init(name: Notification.Name(rawValue: HouseDidChangeNotificationName),
-                                             object: self, userInfo: [HouseKey : theHouse])
+        let notification = Notification.init(name: .houseDidChangeNotification,
+                                             object: self, userInfo: [Constants.HouseKey : theHouse])
         
         nc.post(notification)
         
@@ -106,7 +106,7 @@ extension HouseListViewController {
         let userDefaults = UserDefaults.standard
         
         // Lo insertamos en el diccionario de User Defaults
-        userDefaults.set(row, forKey: lastHouseKey)
+        userDefaults.set(row, forKey: Constants.lastHouseKey)
         
         // Guardar
         userDefaults.synchronize() // Por si acaso
@@ -114,7 +114,7 @@ extension HouseListViewController {
     
     func lastSelectedHouse() -> House {
         // Averiguar cual es la ultima row seleccionada (si la hay)
-        let row = UserDefaults.standard.integer(forKey: lastHouseKey) // Value 0 es el default
+        let row = UserDefaults.standard.integer(forKey: Constants.lastHouseKey) // Value 0 es el default
         return house(at: row)
     }
     

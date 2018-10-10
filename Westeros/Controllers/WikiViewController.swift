@@ -41,7 +41,7 @@ class WikiViewController: UIViewController {
         // En este caso, me quiero enterar de cuando se cambia una casa
         // Quiero observar los cambios de casa( notificacion con nombre HouseDidChangeNotificationName
         // y cuando ocurra, quiero ejecutar el metodo houseDidChange
-        NotificationCenter.default.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(HouseDidChangeNotificationName), object: nil) // object es quien lo manda
+        NotificationCenter.default.addObserver(self, selector: #selector(houseDidChange), name: .houseDidChangeNotification, object: nil) // object es quien lo manda
         
     }
     
@@ -67,7 +67,7 @@ extension WikiViewController {
     @objc func houseDidChange(notification: Notification) {
         // sacar la info y extraer la casa
         guard let info = notification.userInfo,
-            let house = info[HouseKey] as? House else { return }
+            let house = info[Constants.HouseKey] as? House else { return }
         
         // Actualizar el modelo
         self.model = house

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932F2C8B216DC78500016E9C /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932F2C8A216DC78500016E9C /* Notification+Name.swift */; };
 		936D195B21535036000F3511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D195A21535036000F3511 /* AppDelegate.swift */; };
 		936D19622153503D000F3511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 936D19612153503D000F3511 /* Assets.xcassets */; };
 		936D19652153503D000F3511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936D19632153503D000F3511 /* LaunchScreen.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		932F2C8A216DC78500016E9C /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		936D195721535036000F3511 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936D195A21535036000F3511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936D19612153503D000F3511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				93B49B4D21604FA600CC671D /* UIViewController+Navigation.swift */,
+				932F2C8A216DC78500016E9C /* Notification+Name.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				93B49B4E21604FA600CC671D /* UIViewController+Navigation.swift in Sources */,
 				93AF57F9215A16B5005D503A /* HouseDetailViewController.swift in Sources */,
 				936D19802153696F000F3511 /* Sigil.swift in Sources */,
+				932F2C8B216DC78500016E9C /* Notification+Name.swift in Sources */,
 				93B9D0A921618E24000C9793 /* MemberListViewController.swift in Sources */,
 				936D197E2153627D000F3511 /* House.swift in Sources */,
 				936D195B21535036000F3511 /* AppDelegate.swift in Sources */,
