@@ -44,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         
         // 4. Asignamos el rootVC
+        //let houseCollectionVC = HouseCollectionViewController(model: houses)
+        
         window?.rootViewController = splitViewController
         
         // Always in same line before 'return true'
