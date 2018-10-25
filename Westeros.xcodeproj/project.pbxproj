@@ -10,6 +10,10 @@
 		932F2C8B216DC78500016E9C /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932F2C8A216DC78500016E9C /* Notification+Name.swift */; };
 		932F2C8F216DCE9200016E9C /* HouseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932F2C8D216DCE9200016E9C /* HouseCell.swift */; };
 		932F2C90216DCE9200016E9C /* HouseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932F2C8E216DCE9200016E9C /* HouseCell.xib */; };
+		935A1BE3218162780050A344 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A1BE2218162780050A344 /* Season.swift */; };
+		935A1BE5218162D40050A344 /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A1BE4218162D40050A344 /* SeasonTests.swift */; };
+		935A1BE721817A380050A344 /* EpisodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A1BE621817A380050A344 /* EpisodeTests.swift */; };
+		935A1BE9218195FB0050A344 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A1BE8218195FB0050A344 /* Episode.swift */; };
 		936D195B21535036000F3511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D195A21535036000F3511 /* AppDelegate.swift */; };
 		936D19622153503D000F3511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 936D19612153503D000F3511 /* Assets.xcassets */; };
 		936D19652153503D000F3511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936D19632153503D000F3511 /* LaunchScreen.storyboard */; };
@@ -53,6 +57,10 @@
 		932F2C8A216DC78500016E9C /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		932F2C8D216DCE9200016E9C /* HouseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCell.swift; sourceTree = "<group>"; };
 		932F2C8E216DCE9200016E9C /* HouseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseCell.xib; sourceTree = "<group>"; };
+		935A1BE2218162780050A344 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		935A1BE4218162D40050A344 /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
+		935A1BE621817A380050A344 /* EpisodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTests.swift; sourceTree = "<group>"; };
+		935A1BE8218195FB0050A344 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		936D195721535036000F3511 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936D195A21535036000F3511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936D19612153503D000F3511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +163,8 @@
 				936D197A2153609F000F3511 /* HouseTests.swift */,
 				936D1981215378AA000F3511 /* PersonTests.swift */,
 				93B49B4F2160718600CC671D /* RepositoryTests.swift */,
+				935A1BE4218162D40050A344 /* SeasonTests.swift */,
+				935A1BE621817A380050A344 /* EpisodeTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -166,6 +176,8 @@
 				936D197D2153627D000F3511 /* House.swift */,
 				936D197F2153696F000F3511 /* Sigil.swift */,
 				936D1983215378F0000F3511 /* Person.swift */,
+				935A1BE2218162780050A344 /* Season.swift */,
+				935A1BE8218195FB0050A344 /* Episode.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -335,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935A1BE3218162780050A344 /* Season.swift in Sources */,
 				93B49B532160730000CC671D /* Repository.swift in Sources */,
 				93B9D0AC2161BCCC000C9793 /* Constants.swift in Sources */,
 				93B49B4E21604FA600CC671D /* UIViewController+Navigation.swift in Sources */,
@@ -347,6 +360,7 @@
 				932F2C8F216DCE9200016E9C /* HouseCell.swift in Sources */,
 				936D197E2153627D000F3511 /* House.swift in Sources */,
 				936D195B21535036000F3511 /* AppDelegate.swift in Sources */,
+				935A1BE9218195FB0050A344 /* Episode.swift in Sources */,
 				93B9D09D21613946000C9793 /* WikiViewController.swift in Sources */,
 				936D1984215378F0000F3511 /* Person.swift in Sources */,
 				93B9D0A121616A66000C9793 /* HouseListViewController.swift in Sources */,
@@ -357,8 +371,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935A1BE5218162D40050A344 /* SeasonTests.swift in Sources */,
 				936D197B2153609F000F3511 /* HouseTests.swift in Sources */,
 				936D1982215378AA000F3511 /* PersonTests.swift in Sources */,
+				935A1BE721817A380050A344 /* EpisodeTests.swift in Sources */,
 				93B49B502160718600CC671D /* RepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
