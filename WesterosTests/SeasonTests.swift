@@ -10,9 +10,16 @@ import XCTest
 @testable import Westeros
 
 class SeasonTests: XCTestCase {
+    
+    var firstSeason: Season!
+    var secondSeason: Season!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/mm/yyyy"
+        
+        firstSeason = Season(name: "Temporada 1", releaseDate: dateFormatter.date(from: "17/04/2011")!)
+        secondSeason = Season(name: "Temporada 2", releaseDate: dateFormatter.date(from: "01/04/2012")!)
     }
 
     override func tearDown() {
@@ -20,12 +27,31 @@ class SeasonTests: XCTestCase {
     }
 
     func testSeasonExistence() {
+        XCTAssertNotNil(firstSeason)
+    }
+    
+    func testSeasonCustomStringConvertible() {
+        XCTAssertNotNil(firstSeason.description)
+    }
+    
+    func testSeasonEquality() {
+        // 1. Identidad
+        XCTAssertEqual(firstSeason, firstSeason)
+        
+        // 2. Igualdad
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/mm/yyyy"
         
-        let firstSeason = Season(name: "Temporada 1", releaseDate: dateFormatter.date(from: "17/04/2011")!)
+        let season = Season(name: "Temporada 1", releaseDate: dateFormatter.date(from: "17/04/2011")!)
         
-        XCTAssertNotNil(firstSeason)
+        XCTAssertEqual(firstSeason, season)
+        
+        // 3. Desigualdad
+        XCTAssertNotEqual(firstSeason, secondSeason)
     }
-
+    
+    func testSeasonComparison() {
+        XCTAssertGreaterThan(secondSeason, firstSeason)
+    }
+    
 }

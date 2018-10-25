@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Episodes = Array<Episode>
+typealias Episodes = Set<Episode>
 
 final class Season {
     
@@ -19,7 +19,6 @@ final class Season {
     
     // MARK: - Initialization
     init(name: String, releaseDate: Date, episodes: Episodes = Episodes()) {
-        // Nos encargamos de nuestras propias variables
         self.name = name
         self.releaseDate = releaseDate
         self._episodes = episodes
@@ -29,3 +28,52 @@ final class Season {
         self.init(name: name, releaseDate: releaseDate, episodes: Episodes(arrayLiteral: episode))
     }
 }
+
+extension Season {
+    var numberOfEpisodes: Int {
+       return  _episodes.count
+    }
+}
+
+// MARK: - Proxy
+extension Season {
+    var proxyForEquality: String {
+        return "\(name) \(releaseDate) \(numberOfEpisodes)"
+    }
+    
+    var proxyForComparison: Date {
+        return releaseDate
+    }
+}
+
+// MARK: - CustomStringConvertible
+extension Season: CustomStringConvertible {
+    var description: String {
+        return "\(name). releaseDate at \(releaseDate). \(numberOfEpisodes) episodes"
+    }
+}
+
+// MARK: - Equatable
+extension Season: Equatable {
+    static func == (lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxyForEquality == rhs.proxyForEquality
+    }
+}
+
+// MARK: - Hashable
+extension Season: Hashable {
+    var hashValue: Int {
+        return proxyForEquality.hashValue
+    }
+}
+
+// MARK: - Comparable
+extension Season: Comparable {
+    static func < (lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxyForComparison < rhs.proxyForComparison
+    }
+}
+
+
+
+
