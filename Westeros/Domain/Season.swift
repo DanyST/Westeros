@@ -33,6 +33,15 @@ extension Season {
     var numberOfEpisodes: Int {
        return  _episodes.count
     }
+    
+    func add(episode: Episode) {
+        guard self == episode.season else { return }
+        self._episodes.insert(episode)
+    }
+    
+    func add(episodes: Episode...) {
+        episodes.forEach { self.add(episode: $0) }
+    }
 }
 
 // MARK: - Proxy
