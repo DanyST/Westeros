@@ -62,5 +62,19 @@ class RepositoryTests: XCTestCase {
         
         XCTAssertEqual(localSeasons.count, 7)
     }
+    
+    func testLocalRepositorySeasonFiltering() {
+        var filtered = Repository.local.seasons { $0.numberOfEpisodes == 2 }
+        XCTAssertEqual(filtered.count, 7)
+        
+        filtered = Repository.local.seasons { $0.numberOfEpisodes == 0 }
+        XCTAssertTrue(filtered.isEmpty)
+        
+        let dateFormmatter = DateFormatter()
+        dateFormmatter.dateFormat = "dd/MM/yyyy"
+        
+        filtered = Repository.local.seasons { $0.releaseDate < dateFormmatter.date(from: "01/01/2015")! }
+        XCTAssertEqual(filtered.count, 4)
+    }
 
 }
