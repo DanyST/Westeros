@@ -120,7 +120,7 @@ extension LocalFactory: SeasonFactory {
         sixthSeason.add(episodes: episode01x06, episode02x06)
         seventhSeason.add(episodes: episode01x07, episode02x07)
         
-        return [firstSeason, secondSeason, thirthSeason, fourthSeason, fifthSeason, sixthSeason, seventhSeason]
+        return [firstSeason, secondSeason, thirthSeason, fourthSeason, fifthSeason, sixthSeason, seventhSeason].sorted()
         
     }
     

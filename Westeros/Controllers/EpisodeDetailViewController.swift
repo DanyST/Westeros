@@ -1,5 +1,5 @@
 //
-//  SeasonDetailViewController.swift
+//  EpisodeDetailViewController.swift
 //  Westeros
 //
 //  Created by Luis Herrera Lillo on 26-10-18.
@@ -8,18 +8,17 @@
 
 import UIKit
 
-class SeasonDetailViewController: UIViewController {
-    
+class EpisodeDetailViewController: UIViewController {
+
     // MARK: - Properties
-    let model: Season
+    let model: Episode
     
     // Mark - Outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var numberEpisodesLabel: UILabel!
     
     // MARK: - Initialization
-    init(model: Season) {
+    init(model: Episode) {
         // Nos encargamos de nuestras propias propiedades
         self.model = model
         
@@ -27,7 +26,7 @@ class SeasonDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // Propiedades de la super clase
-        self.title = model.name
+        self.title = "\(model.name). \(model.season?.name ?? "")"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,41 +37,18 @@ class SeasonDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // SetupUI
-        setUpUI()
-        
-        // Sync UI
         syncModelWithView()
+        
     }
     
-    // MARK: - Sync
+    // MARK: - SyncModelWIthView
     func syncModelWithView() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        
         let releaseDate = dateFormatter.string(from: model.releaseDate)
         
         nameLabel.text = model.name
-        releaseDateLabel.text = releaseDate
-        numberEpisodesLabel.text = model.numberOfEpisodes.description
+        releaseDateLabel.text = releaseDate        
     }
-    
-    // MARK: - SetupUI
-    func setUpUI() {
-        // Crear el botón de episodios
-        let episodesButton = UIBarButtonItem(title: "Episodios", style: .plain, target: self, action: #selector(displayEpisodes))
-        
-        // Añadir el botón
-        self.navigationItem.rightBarButtonItem = episodesButton
-    }
-    
-    @objc func displayEpisodes() {
-        // Crear el VC destino
-        let episodeListViewController = EpisodeListViewController(model: model.sortedEpisodes)
-        
-        // hacemos push
-        self.navigationController?.pushViewController(episodeListViewController, animated: true)
-    }
-    
     
 }

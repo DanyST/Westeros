@@ -76,5 +76,9 @@ class RepositoryTests: XCTestCase {
         filtered = Repository.local.seasons { $0.releaseDate < dateFormmatter.date(from: "01/01/2015")! }
         XCTAssertEqual(filtered.count, 4)
     }
+    
+    func testLocalRepositoryReturnSortedArrayOfEpisodes() {
+        XCTAssertEqual(localSeasons, localSeasons.sorted())
+    }
 
 }

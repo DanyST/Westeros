@@ -30,6 +30,10 @@ final class Season {
 }
 
 extension Season {
+    var sortedEpisodes: [Episode] {
+        return self._episodes.sorted()
+    }
+    
     var numberOfEpisodes: Int {
        return  _episodes.count
     }

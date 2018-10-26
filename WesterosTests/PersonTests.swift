@@ -61,7 +61,4 @@ class PersonTests: XCTestCase {
         XCTAssertGreaterThan(ned, arya)
     }
     
-    func testHouseSortedMembersReturnsASortedArray() {
-        
-    }
 }

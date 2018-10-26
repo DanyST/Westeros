@@ -84,8 +84,8 @@ extension SeasonListViewController: UITableViewDelegate {
         let theHouse = season(at: indexPath.row)
         
         // Hacer push a SeasonDetailViewController
-        let SeasonDetailVC = SeasonDetailViewController(model: theHouse)
+        let seasonDetailVC = SeasonDetailViewController(model: theHouse)
         
-        self.navigationController?.pushViewController(SeasonDetailVC, animated: true)                
+        self.navigationController?.pushViewController(seasonDetailVC, animated: true)
     }
 }
