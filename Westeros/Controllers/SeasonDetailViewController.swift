@@ -47,8 +47,13 @@ class SeasonDetailViewController: UIViewController {
     }
     
     func syncModelWithView() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        let releaseDate = dateFormatter.string(from: model.releaseDate)
+        
         nameLabel.text = model.name
-        releaseDateLabel.text = model.releaseDate.description
+        releaseDateLabel.text = releaseDate
         numberEpisodesLabel.text = model.numberOfEpisodes.description
     }
 }

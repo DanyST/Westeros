@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SeasonListViewController: UIViewController {
     
     // MARK: - Properties
@@ -35,7 +36,9 @@ class SeasonListViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
 }
 
@@ -71,5 +74,18 @@ extension SeasonListViewController: UITableViewDataSource {
         
         // Devolvemos la celda
         return cell!
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension SeasonListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Averiguar la season seleccionada
+        let theHouse = season(at: indexPath.row)
+        
+        // Hacer push a SeasonDetailViewController
+        let SeasonDetailVC = SeasonDetailViewController(model: theHouse)
+        
+        self.navigationController?.pushViewController(SeasonDetailVC, animated: true)                
     }
 }

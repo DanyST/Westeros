@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let houseCollectionVC = HouseCollectionViewController(model: houses)
         let seasonListViewController = SeasonListViewController(model: seasons)
         
-        window?.rootViewController = seasonListViewController
+        window?.rootViewController = seasonListViewController.wrappedInNavigation()
         
         // Always in same line before 'return true'
         window?.makeKeyAndVisible()
