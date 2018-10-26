@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 1. Creamos el modelo
         let houses = Repository.local.houses
+        let seasons = Repository.local.seasons
         
         // 2. Crear los controladores
         
@@ -45,8 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 4. Asignamos el rootVC
         //let houseCollectionVC = HouseCollectionViewController(model: houses)
+        let seasonListViewController = SeasonListViewController(model: seasons)
         
-        window?.rootViewController = splitViewController
+        window?.rootViewController = seasonListViewController
         
         // Always in same line before 'return true'
         window?.makeKeyAndVisible()
