@@ -37,6 +37,7 @@ class MemberListViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension MemberListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count

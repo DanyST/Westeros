@@ -11,7 +11,7 @@ import UIKit
 class EpisodeListViewController: UIViewController {
     
     // MARK: - Properties
-    let model: [Episode]
+    var model: [Episode]
     
     // Mark - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -40,6 +40,35 @@ class EpisodeListViewController: UIViewController {
         self.tableView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Nos damos de alta en las notificaciones
+        NotificationCenter.default.addObserver(self, selector: #selector(seasonDidChange(notification:)), name: .seasonDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Nos damos de baja en las notificaciones
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+// MARK: - Notifications
+extension EpisodeListViewController {
+    @objc func seasonDidChange(notification: Notification) {
+        // extraemos la info y sacamos la temporada (season)
+        guard let userInfo = notification.userInfo,
+        let season = userInfo[Constants.SeasonKey] as? Season else { return }
+        
+        // actualizamos el modelo
+        self.model = season.sortedEpisodes
+        
+        // sincronizamos modelo y vista
+        tableView.reloadData()
+    }
 }
 
 extension EpisodeListViewController {

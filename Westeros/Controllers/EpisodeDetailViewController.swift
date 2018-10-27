@@ -37,8 +37,18 @@ class EpisodeDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        syncModelWithView()
+        // Nos damos de alta en las notificaciones
+        NotificationCenter.default.addObserver(self, selector: #selector(seasonDidChange(notification:)), name: .seasonDidChangeNotification, object: nil)
         
+        // sincronizamos modelo y vista
+        syncModelWithView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // Nos damos de baja en las notificaciones
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - SyncModelWIthView
@@ -50,5 +60,12 @@ class EpisodeDetailViewController: UIViewController {
         nameLabel.text = model.name
         releaseDateLabel.text = releaseDate        
     }
-    
+}
+
+// MARK: - Notifications
+extension EpisodeDetailViewController {
+    @objc func seasonDidChange(notification: Notification) {
+        // Nos devolvemos al controlador de la pila anterior en el navigationController
+        self.navigationController?.popViewController(animated: true)
+    }
 }

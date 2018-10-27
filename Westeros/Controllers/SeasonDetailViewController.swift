@@ -41,7 +41,10 @@ class SeasonDetailViewController: UIViewController {
         // Sync UI
         syncModelWithView()
     }
-    
+}
+
+
+extension SeasonDetailViewController {
     // MARK: - Sync
     func syncModelWithView() {
         let dateFormatter = DateFormatter()
@@ -73,8 +76,6 @@ class SeasonDetailViewController: UIViewController {
         // hacemos push
         self.navigationController?.pushViewController(episodeListViewController, animated: true)
     }
-    
-    
 }
 
 // Mark - SeasonListViewControllerDelegate
