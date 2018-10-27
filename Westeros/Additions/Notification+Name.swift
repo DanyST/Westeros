@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let houseDidChangeNotification = Notification.Name(Constants.HouseDidChangeNotificationName)
+    static let seasonDidChangeNotification = Notification.Name(Constants.SeasonDidChangeNotificationName)
 }

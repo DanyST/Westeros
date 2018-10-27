@@ -10,6 +10,11 @@ import Foundation
 
 enum Constants {
     static let HouseDidChangeNotificationName = "HouseDidChange"
+    static let SeasonDidChangeNotificationName = "SeasonDidChange"
+    
     static let HouseKey = "HouseKey"
+    static let SeasonKey = "SeasonKey"
+    
     static let lastHouseKey = "LastHouseKey"
+    static let lastSeasonKey = "LastSeasonKey"
 }

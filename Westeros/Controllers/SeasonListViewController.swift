@@ -9,10 +9,15 @@
 import UIKit
 
 
+protocol SeasonListViewControllerDelegate {
+    func seasonListViewController(_ vc: SeasonListViewController, didSelectedSeason season: Season)
+}
+
 class SeasonListViewController: UIViewController {
     
     // MARK: - Properties
     let model: [Season]
+    var delegate: SeasonListViewControllerDelegate?
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -81,11 +86,16 @@ extension SeasonListViewController: UITableViewDataSource {
 extension SeasonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Averiguar la season seleccionada
-        let theHouse = season(at: indexPath.row)
+        let theSeason = season(at: indexPath.row)
         
-        // Hacer push a SeasonDetailViewController
-        let seasonDetailVC = SeasonDetailViewController(model: theHouse)
+        // SIEMPRE emitir la informacion a través de los dos metodos: delegates y notifications
+        // Avisar/Informar al delegado
+        delegate?.seasonListViewController(self, didSelectedSeason: theSeason)
         
-        self.navigationController?.pushViewController(seasonDetailVC, animated: true)
+        // Enviar una notificacion
+        let nc = NotificationCenter.default
+        let notification = Notification(name: .seasonDidChangeNotification, object: self, userInfo: [Constants.SeasonKey: theSeason])
+
+        nc.post(notification)
     }
 }

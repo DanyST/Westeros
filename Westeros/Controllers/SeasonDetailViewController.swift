@@ -11,7 +11,7 @@ import UIKit
 class SeasonDetailViewController: UIViewController {
     
     // MARK: - Properties
-    let model: Season
+    var model: Season
     
     // Mark - Outlets
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,9 +25,6 @@ class SeasonDetailViewController: UIViewController {
         
         // Llamamos a super
         super.init(nibName: nil, bundle: nil)
-        
-        // Propiedades de la super clase
-        self.title = model.name
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +52,9 @@ class SeasonDetailViewController: UIViewController {
         nameLabel.text = model.name
         releaseDateLabel.text = releaseDate
         numberEpisodesLabel.text = model.numberOfEpisodes.description
+        
+        // Propiedades de la super clase
+        self.title = model.name
     }
     
     // MARK: - SetupUI
@@ -75,4 +75,13 @@ class SeasonDetailViewController: UIViewController {
     }
     
     
+}
+
+// Mark - SeasonListViewControllerDelegate
+extension SeasonDetailViewController: SeasonListViewControllerDelegate {
+    
+    func seasonListViewController(_ vc: SeasonListViewController, didSelectedSeason season: Season) {
+        self.model = season
+        syncModelWithView()
+    }
 }

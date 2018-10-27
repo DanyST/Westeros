@@ -82,7 +82,7 @@ extension LocalFactory: SeasonFactory {
         
         // Seasons creation
         let firstSeason = Season(name: "Season 1", releaseDate: dateFormatter.date(from: "17/04/2011")!)
-        let secondSeason = Season(name: "Season 2", releaseDate: dateFormatter.date(from: "01/04/2011")!)
+        let secondSeason = Season(name: "Season 2", releaseDate: dateFormatter.date(from: "01/04/2012")!)
         let thirthSeason = Season(name: "Season 3", releaseDate: dateFormatter.date(from: "31/03/2013")!)
         let fourthSeason = Season(name: "Season 4", releaseDate: dateFormatter.date(from: "06/04/2014")!)
         let fifthSeason = Season(name: "Season 5", releaseDate: dateFormatter.date(from: "12/04/2015")!)

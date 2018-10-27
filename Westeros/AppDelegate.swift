@@ -12,6 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var splitViewController: UISplitViewController!
+    var houseDetailNavigation: UINavigationController!
+    var seasonDetailNavigation: UINavigationController!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -19,35 +23,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .cyan
         
-        // 1. Creamos el modelo
+        // 1. Creamos los modelos
         let houses = Repository.local.houses
         let seasons = Repository.local.seasons
         
-        // 2. Crear los controladores
-        
-        // Master
+        // 2. Creamos los controladores
         let houseListViewController = HouseListViewController(model: houses)
+        
         let lastHouseSelected = houseListViewController.lastSelectedHouse()
-
-        // Detail
         let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
+        
+        let seasonListViewController = SeasonListViewController(model: seasons)
+        let seasonDetailViewController = SeasonDetailViewController(model: seasons.first!)
         
         // Asignar delegados
         // Un objeto SOLO  puede tener un delegado
         // Sin embargo, un objeto, SI puede ser delegado de varios otros
         houseListViewController.delegate = houseDetailViewController
+        seasonListViewController.delegate = seasonDetailViewController
         
-        // 3. Creamos el combinador, osea, el splitVC
-        let splitViewController = UISplitViewController()
-        splitViewController.viewControllers = [
-            houseListViewController.wrappedInNavigation(),
-            houseDetailViewController.wrappedInNavigation()
+        // 3. Creamos los navigations
+        let houseListNavigation = houseListViewController.wrappedInNavigation()
+        let seasonListNavigation = seasonListViewController.wrappedInNavigation()
+        houseDetailNavigation = houseDetailViewController.wrappedInNavigation()
+        seasonDetailNavigation = seasonDetailViewController.wrappedInNavigation()
+        
+        // 4. Creamos el UITabBarController
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [
+            houseListNavigation,
+            seasonListNavigation
         ]
         
-        // 4. Asignamos el rootVC
-        //let houseCollectionVC = HouseCollectionViewController(model: houses)
-        let seasonListViewController = SeasonListViewController(model: seasons)
+        // tabBarController Delegate
+        tabBarController.delegate = self
         
+        // 5. Creamos el combinador, osea, el splitVC
+        splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [
+            tabBarController,
+            houseDetailNavigation,
+            seasonDetailNavigation
+        ]
+        
+        // 6. Asignamos el rootVC
+        //let houseCollectionVC = HouseCollectionViewController(model: houses)
         window?.rootViewController = splitViewController
         
         // Always in same line before 'return true'
@@ -55,29 +75,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 
+
+extension AppDelegate: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        // Averiguar que controlador fue seleccionado
+        guard let navigationController = viewController as? UINavigationController,
+            let viewController = navigationController.topViewController else { return }
+        
+        let isSeasonListVC = type(of: viewController) == SeasonListViewController.self
+        
+        
+        var detailViewController: UINavigationController
+        if isSeasonListVC {
+            detailViewController = seasonDetailNavigation
+        }else {
+            detailViewController = houseDetailNavigation
+        }
+        
+        
+        // Mostrar el controlador correspondiente en el splitVC detail
+        splitViewController.showDetailViewController(detailViewController, sender: nil)
+    }
+}
