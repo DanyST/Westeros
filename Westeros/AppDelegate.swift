@@ -41,8 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Asignar delegados
         // Un objeto SOLO  puede tener un delegado
         // Sin embargo, un objeto, SI puede ser delegado de varios otros
-        houseListViewController.delegate = houseDetailViewController
-        seasonListViewController.delegate = seasonDetailViewController
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            houseListViewController.delegate = houseDetailViewController
+            seasonListViewController.delegate = seasonDetailViewController
+        }else {
+            houseListViewController.delegate = houseListViewController
+            seasonListViewController.delegate = seasonListViewController
+        }
+        
         
         // 3. Creamos los navigations
         let houseListNavigation = houseListViewController.wrappedInNavigation()
@@ -98,6 +104,8 @@ extension AppDelegate: UITabBarControllerDelegate {
         
         
         // Mostrar el controlador correspondiente en el splitVC detail
-        splitViewController.showDetailViewController(detailViewController, sender: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            splitViewController.showDetailViewController(detailViewController, sender: nil)
+        }
     }
 }

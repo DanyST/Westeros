@@ -104,6 +104,17 @@ extension SeasonListViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - SeasonListViewControllerDelegate
+extension SeasonListViewController: SeasonListViewControllerDelegate {
+    
+    func seasonListViewController(_ vc: SeasonListViewController, didSelectedSeason season: Season) {
+        // hacemos push a SeasonDetailViewController
+        let seasonDetailViewController = SeasonDetailViewController(model: season)
+        
+        self.navigationController?.pushViewController(seasonDetailViewController, animated: true)
+    }
+}
+
 // MARK: - Persistence (UserDefaults)
 extension SeasonListViewController {
     

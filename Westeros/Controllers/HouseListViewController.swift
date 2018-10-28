@@ -108,6 +108,16 @@ class HouseListViewController: UITableViewController {
     }
 }
 
+// MARK: - HouseListViewControllerDelegate
+extension HouseListViewController: HouseListViewControllerDelegate {
+    func houseListViewController(_ vc: HouseListViewController, didSelectedHouse house: House) {
+        // hacemos push a houseDetailViewController
+        let houseDetailViewController = HouseDetailViewController(model: house)
+        
+        self.navigationController?.pushViewController(houseDetailViewController, animated: true)
+    }
+}
+
 // MARK: - Persistence (UserDefaults) Solo sirve para persistir PEQUEÑAS cantidades de objetos
 // Los objetos tiene que ser sencillos: String, Int, Array, ...
 extension HouseListViewController {
