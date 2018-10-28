@@ -34,6 +34,7 @@ class MemberListViewController: UIViewController {
         super.viewDidLoad()
         // FUNDAMENTAL!!! No olvidarse de contar al tableview quienes son sus ayudantes (datasource y delegate)
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,14 @@ class MemberListViewController: UIViewController {
         
         // Nos damos de baja en las notificaciones
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: - Functions
+extension MemberListViewController {
+    
+    func member(at index: Int) -> Person {
+        return self.model[index]
     }
 }
 
@@ -93,5 +102,18 @@ extension MemberListViewController: UITableViewDataSource {
         
         // Devolvemos la celda
         return cell!
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension MemberListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Averiguamos la persona seleccionada
+        let theMember = member(at: indexPath.row)
+        
+        // Hacemos push
+        let memberDetailViewController = MemberDetailViewController(model: theMember)
+        
+        self.navigationController?.pushViewController(memberDetailViewController, animated: true)
     }
 }

@@ -30,6 +30,8 @@
 		936D19802153696F000F3511 /* Sigil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D197F2153696F000F3511 /* Sigil.swift */; };
 		936D1982215378AA000F3511 /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D1981215378AA000F3511 /* PersonTests.swift */; };
 		936D1984215378F0000F3511 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D1983215378F0000F3511 /* Person.swift */; };
+		93888335218515690016E44B /* MemberDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93888333218515690016E44B /* MemberDetailViewController.swift */; };
+		93888336218515690016E44B /* MemberDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93888334218515690016E44B /* MemberDetailViewController.xib */; };
 		93988E27217C226C004C0AE8 /* HouseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93988E25217C226C004C0AE8 /* HouseCollectionViewController.swift */; };
 		93988E28217C226C004C0AE8 /* HouseCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93988E26217C226C004C0AE8 /* HouseCollectionViewController.xib */; };
 		93988E2B217D92C8004C0AE8 /* HouseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93988E29217D92C8004C0AE8 /* HouseCollectionViewCell.swift */; };
@@ -89,6 +91,8 @@
 		936D197F2153696F000F3511 /* Sigil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sigil.swift; sourceTree = "<group>"; };
 		936D1981215378AA000F3511 /* PersonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
 		936D1983215378F0000F3511 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		93888333218515690016E44B /* MemberDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailViewController.swift; sourceTree = "<group>"; };
+		93888334218515690016E44B /* MemberDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberDetailViewController.xib; sourceTree = "<group>"; };
 		93988E25217C226C004C0AE8 /* HouseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewController.swift; sourceTree = "<group>"; };
 		93988E26217C226C004C0AE8 /* HouseCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseCollectionViewController.xib; sourceTree = "<group>"; };
 		93988E29217D92C8004C0AE8 /* HouseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				93B9D09C21613946000C9793 /* WikiViewController.xib */,
 				93B9D0A721618E24000C9793 /* MemberListViewController.swift */,
 				93B9D0A821618E24000C9793 /* MemberListViewController.xib */,
+				93888333218515690016E44B /* MemberDetailViewController.swift */,
+				93888334218515690016E44B /* MemberDetailViewController.xib */,
 				935101D92182B7B600C2D77D /* SeasonListViewController.swift */,
 				935101DA2182B7B600C2D77D /* SeasonListViewController.xib */,
 				935101DD2182BE1700C2D77D /* SeasonDetailViewController.swift */,
@@ -342,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93888336218515690016E44B /* MemberDetailViewController.xib in Resources */,
 				935101E02182BE1700C2D77D /* SeasonDetailViewController.xib in Resources */,
 				93AF57F2215A148D005D503A /* lannister.jpg in Resources */,
 				93B9D09E21613946000C9793 /* WikiViewController.xib in Resources */,
@@ -381,6 +388,7 @@
 				93B9D0AC2161BCCC000C9793 /* Constants.swift in Sources */,
 				93B49B4E21604FA600CC671D /* UIViewController+Navigation.swift in Sources */,
 				93AF57F9215A16B5005D503A /* HouseDetailViewController.swift in Sources */,
+				93888335218515690016E44B /* MemberDetailViewController.swift in Sources */,
 				936D19802153696F000F3511 /* Sigil.swift in Sources */,
 				93988E27217C226C004C0AE8 /* HouseCollectionViewController.swift in Sources */,
 				935101DB2182B7B600C2D77D /* SeasonListViewController.swift in Sources */,
