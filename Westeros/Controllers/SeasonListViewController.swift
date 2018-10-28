@@ -47,6 +47,7 @@ class SeasonListViewController: UIViewController {
     }
 }
 
+// MARK: - Methods
 extension SeasonListViewController {
     func season(at index: Int) -> Season {
         return model[index]
@@ -97,5 +98,31 @@ extension SeasonListViewController: UITableViewDelegate {
         let notification = Notification(name: .seasonDidChangeNotification, object: self, userInfo: [Constants.SeasonKey: theSeason])
 
         nc.post(notification)
+        
+        // guardamos ultima temporada(season) seleccionada
+        saveLastSelectedSeason(at: indexPath.row)
     }
 }
+
+// MARK: - Persistence (UserDefaults)
+extension SeasonListViewController {
+    
+    func saveLastSelectedSeason(at row: Int) {
+        // Aquí vamos a guardar la ultima temporada(season) seleccionada
+        let userDefaults = UserDefaults.standard
+        
+        // Lo insertamos en el diccionario de UserDefaults
+        userDefaults.set(row, forKey: Constants.lastSeasonKey)
+        
+        // Guardar (por si acaso)
+        userDefaults.synchronize()
+    }
+    
+    func lastSelectedSeason() -> Season {
+        // Averiguamos cual es la ultima row seleccionada (si la hay)
+        let row = UserDefaults.standard.integer(forKey: Constants.lastSeasonKey) // Value 0 es el default
+        
+        return season(at: row)
+    }
+}
+

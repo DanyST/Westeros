@@ -52,7 +52,7 @@ class MemberListViewController: UIViewController {
     }
 }
 
-// MARK: - Functions
+// MARK: - Methods
 extension MemberListViewController {
     
     func member(at index: Int) -> Person {

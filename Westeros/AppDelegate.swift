@@ -29,12 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 2. Creamos los controladores
         let houseListViewController = HouseListViewController(model: houses)
-        
+    
         let lastHouseSelected = houseListViewController.lastSelectedHouse()
         let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
         
         let seasonListViewController = SeasonListViewController(model: seasons)
-        let seasonDetailViewController = SeasonDetailViewController(model: seasons.first!)
+        
+        let lastSeasonSelected = seasonListViewController.lastSelectedSeason()
+        let seasonDetailViewController = SeasonDetailViewController(model: lastSeasonSelected)
         
         // Asignar delegados
         // Un objeto SOLO  puede tener un delegado
